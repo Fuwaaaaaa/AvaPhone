@@ -6,6 +6,7 @@ obj/
 .vs/
 artifacts/
 TestResults/
+*.log
 
 # ===== Flutter (mobile-app) =====
 .dart_tool/
