@@ -1,0 +1,17 @@
+{
+  "name": "net.transit.phone-gimmick",
+  "displayName": "Phone Gimmick",
+  "version": "0.1.0",
+  "unity": "2022.3",
+  "description": "VRChatアバター用スマホギミック自動生成エディタ拡張。Expression Parameters / FX Animator / Expressions Menu を自動生成し、実スマホ→PC中継アプリ→OSC連携(Avatar Smartphone Link)に対応したアバターを構築します。",
+  "author": {
+    "name": "trans-it",
+    "email": "claude.02@trans-it.net"
+  },
+  "vpmDependencies": {
+    "com.vrchat.avatars": ">=3.7.0"
+  },
+  "url": "",
+  "legacyFolders": {},
+  "legacyFiles": {}
+}
