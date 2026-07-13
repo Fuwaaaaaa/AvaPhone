@@ -1,0 +1,40 @@
+# ===== .NET (relay-app) =====
+bin/
+obj/
+*.user
+*.suo
+.vs/
+artifacts/
+TestResults/
+
+# ===== Flutter (mobile-app) =====
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml
+.idea/
+android/.gradle/
+android/local.properties
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/ephemeral/
+windows/flutter/ephemeral/
+
+# ===== Unity (unity-avatar 配下にプロジェクトを置いた場合の保険) =====
+Library/
+Temp/
+Logs/
+UserSettings/
+MemoryCaptures/
+Build/
+Builds/
+*.csproj.meta
+crashlytics-build.properties
+
+# ===== OS / エディタ =====
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
