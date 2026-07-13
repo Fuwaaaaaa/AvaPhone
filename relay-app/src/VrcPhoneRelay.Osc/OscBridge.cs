@@ -20,6 +20,7 @@ public sealed class OscBridge : IOscBridge
     private readonly CancellationTokenSource _cts = new();
     private readonly Task _receiveLoop;
     private readonly ILogger _logger;
+    private volatile IPEndPoint? _sendTarget;
 
     public event Action<string, ParamValue>? ParameterReceived;
     public event Action<string>? AvatarChanged;
@@ -27,21 +28,36 @@ public sealed class OscBridge : IOscBridge
     /// <summary>実際にバインドされた受信ポート(0指定時のOSCQuery広告用)。</summary>
     public int LocalReceivePort { get; }
 
-    public OscBridge(string sendHost, int sendPort, int receivePort, ILogger<OscBridge>? logger = null)
+    public bool HasSendTarget => _sendTarget is not null;
+
+    public OscBridge(int receivePort, ILogger<OscBridge>? logger = null)
     {
         _logger = logger ?? NullLogger<OscBridge>.Instance;
         _sender = new UdpClient();
-        _sender.Connect(sendHost, sendPort);
         _receiver = new UdpClient(new IPEndPoint(IPAddress.Loopback, receivePort));
         LocalReceivePort = ((IPEndPoint)_receiver.Client.LocalEndPoint!).Port;
         _receiveLoop = Task.Run(ReceiveLoopAsync);
     }
 
+    /// <summary>送信先(VRChatのOSC入力)を設定・変更する。OSCQuery発見後に呼ばれる。</summary>
+    public void SetSendTarget(string host, int port)
+    {
+        _sendTarget = new IPEndPoint(IPAddress.Parse(host), port);
+        _logger.LogInformation("OSC送信先を設定: {Host}:{Port}", host, port);
+    }
+
     public async Task SendParameterAsync(string parameterName, ParamValue value, CancellationToken ct = default)
     {
+        var target = _sendTarget;
+        if (target is null)
+        {
+            _logger.LogWarning("OSC送信先未設定のため {Parameter} の送信を破棄", parameterName);
+            return;
+        }
+
         var message = new OscMessage(ParameterPrefix + parameterName, ToOscArgument(value));
         var payload = OscCodec.Encode(message);
-        await _sender.SendAsync(payload, ct).ConfigureAwait(false);
+        await _sender.SendAsync(payload, target, ct).ConfigureAwait(false);
         _logger.LogDebug("OSC送信 {Address} = {Value}", message.Address, value);
     }
 

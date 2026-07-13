@@ -18,7 +18,8 @@ public class OscLoopbackTests : IAsyncLifetime
     {
         // エフェメラルポートで相互接続(実ポート9000/9001は使わず並列実行に安全)
         _fake = new FakeVrchatServer(receivePort: 0, outputPort: 1);
-        _bridge = new OscBridge("127.0.0.1", _fake.ReceivePort, receivePort: 0);
+        _bridge = new OscBridge(receivePort: 0);
+        _bridge.SetSendTarget("127.0.0.1", _fake.ReceivePort);
         _fake.SetOutputPort(_bridge.LocalReceivePort);
 
         foreach (var def in PhoneParameters.All)
