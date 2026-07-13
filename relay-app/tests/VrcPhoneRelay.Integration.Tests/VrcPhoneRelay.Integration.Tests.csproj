@@ -24,6 +24,7 @@
     <ProjectReference Include="..\..\src\VrcPhoneRelay.Core\VrcPhoneRelay.Core.csproj" />
     <ProjectReference Include="..\..\src\VrcPhoneRelay.Osc\VrcPhoneRelay.Osc.csproj" />
     <ProjectReference Include="..\..\src\VrcPhoneRelay.Server\VrcPhoneRelay.Server.csproj" />
+    <ProjectReference Include="..\..\tools\FakeVrchat\FakeVrchat.csproj" />
   </ItemGroup>
 
 </Project>
