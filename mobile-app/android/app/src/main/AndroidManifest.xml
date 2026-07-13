@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 中継アプリへの同一LAN WebSocket接続に必要 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:label="avaphone"
+        android:label="AvaPhone"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

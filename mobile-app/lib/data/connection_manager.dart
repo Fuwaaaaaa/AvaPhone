@@ -47,6 +47,7 @@ class ConnectionManager {
   Timer? _heartbeatTimer;
   Timer? _watchdogTimer;
   Timer? _reconnectTimer;
+  Timer? _authTimeoutTimer;
   final Backoff _backoff = Backoff();
   PairedRelay? _credentials;
   int _generation = 0; // 古い接続試行の残骸を無視するための世代番号
@@ -183,7 +184,8 @@ class ConnectionManager {
     connection.send(buildAuth(authId));
 
     // auth.ack が来ない場合のタイムアウト
-    Timer(Protocol.authTimeout, () {
+    _authTimeoutTimer?.cancel();
+    _authTimeoutTimer = Timer(Protocol.authTimeout, () {
       if (generation != _generation || authenticated) return;
       _handleFailure();
     });
@@ -255,9 +257,11 @@ class ConnectionManager {
     _heartbeatTimer?.cancel();
     _watchdogTimer?.cancel();
     _reconnectTimer?.cancel();
+    _authTimeoutTimer?.cancel();
     _heartbeatTimer = null;
     _watchdogTimer = null;
     _reconnectTimer = null;
+    _authTimeoutTimer = null;
   }
 
   Future<void> _closeConnection() async {

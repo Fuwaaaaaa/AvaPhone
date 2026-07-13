@@ -7,7 +7,11 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Avaphone</string>
+	<string>AvaPhone</string>
+	<key>NSCameraUsageDescription</key>
+	<string>PC中継アプリとのペアリング用QRコードを読み取るためにカメラを使用します。</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>同一ネットワーク上のPC中継アプリと接続し、VRChatアバターのスマートフォンギミックを操作するために使用します。</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

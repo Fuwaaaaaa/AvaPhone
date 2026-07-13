@@ -59,6 +59,8 @@ class PairedRelay {
         'serverName': serverName,
       };
 
+  String toJsonString() => jsonEncode(toJson());
+
   static PairedRelay? fromJson(String raw) {
     try {
       final json = jsonDecode(raw);
