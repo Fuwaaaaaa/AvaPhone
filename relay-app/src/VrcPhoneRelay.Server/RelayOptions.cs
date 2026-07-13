@@ -42,4 +42,7 @@ public sealed class RelayOptions
 
     /// <summary>コンソール対話UIを起動するか(テストでは無効化)。</summary>
     public bool EnableConsoleUi { get; set; } = true;
+
+    /// <summary>VRChat検出のポーリング間隔(秒)。テストで短縮する。</summary>
+    public double StatusPollSeconds { get; set; } = 5;
 }

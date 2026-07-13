@@ -26,6 +26,9 @@ public sealed class RelayServerFixture : IAsyncDisposable
     public string? LastDeviceId { get; private set; }
     public string? LastSecret { get; private set; }
 
+    /// <summary>VRChatプロセス検出の模擬(falseにすると切断を模擬できる)。</summary>
+    public volatile bool VrchatRunning = true;
+
     private string _configRoot = null!;
 
     public async Task StartAsync()
@@ -52,9 +55,10 @@ public sealed class RelayServerFixture : IAsyncDisposable
             FixedSendPort = Fake.ReceivePort,
             FixedReceivePort = 0,
             OscConfigRoot = _configRoot,
-            VrchatProcessProbe = () => true,
+            VrchatProcessProbe = () => VrchatRunning,
             DeviceStorePath = Path.Combine(_configRoot, "devices.json"),
             EnableConsoleUi = false,
+            StatusPollSeconds = 0.2,
         };
 
         App = RelayApp.Build(options);

@@ -35,7 +35,10 @@ public sealed class RelayService(
                     options.FixedSendHost, options.FixedSendPort, bridge.LocalReceivePort,
                     loggerFactory.CreateLogger<FixedPortVrchatLocator>(),
                     isVrchatProcessRunning: options.VrchatProcessProbe,
-                    oscConfigRoot: options.OscConfigRoot);
+                    oscConfigRoot: options.OscConfigRoot)
+                {
+                    PollInterval = TimeSpan.FromSeconds(options.StatusPollSeconds),
+                };
                 break;
             }
 
@@ -46,7 +49,10 @@ public sealed class RelayService(
                 var oscQueryLocator = new OscQueryVrchatLocator(
                     primary.LocalReceivePort, options.ServiceName,
                     loggerFactory.CreateLogger<OscQueryVrchatLocator>(),
-                    options.VrchatProcessProbe);
+                    options.VrchatProcessProbe)
+                {
+                    PollInterval = TimeSpan.FromSeconds(options.StatusPollSeconds),
+                };
                 oscQueryLocator.StatusChanged += status =>
                 {
                     if (status == VrchatStatus.Connected && oscQueryLocator.Endpoint is { } ep)
