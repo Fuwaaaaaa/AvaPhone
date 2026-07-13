@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A7E3A352-F410-4AC9-B2DC-AE621601B0B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VrcPhoneRelay.Core", "src\VrcPhoneRelay.Core\VrcPhoneRelay.Core.csproj", "{7CF8388D-797D-4446-9C24-0E67BE912953}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VrcPhoneRelay.Osc", "src\VrcPhoneRelay.Osc\VrcPhoneRelay.Osc.csproj", "{34FDD544-5F28-4798-93A4-F77BB54254EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VrcPhoneRelay.Server", "src\VrcPhoneRelay.Server\VrcPhoneRelay.Server.csproj", "{612325DB-2827-44C4-8178-992CA45F8B7B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{659E665B-2E0D-4775-A979-60BA98F407CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeVrchat", "tools\FakeVrchat\FakeVrchat.csproj", "{0CC84C8E-F22D-4D5E-A7CC-B3CDF7FA9FBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B14E63C3-CDD7-4ACC-9F8D-F994D00B5FEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VrcPhoneRelay.Core.Tests", "tests\VrcPhoneRelay.Core.Tests\VrcPhoneRelay.Core.Tests.csproj", "{1308AF0D-3226-4842-84C4-CECF842A4A48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VrcPhoneRelay.Integration.Tests", "tests\VrcPhoneRelay.Integration.Tests\VrcPhoneRelay.Integration.Tests.csproj", "{9617A00C-DE07-422F-B5E4-CA1760D19FF5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CF8388D-797D-4446-9C24-0E67BE912953}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CF8388D-797D-4446-9C24-0E67BE912953}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CF8388D-797D-4446-9C24-0E67BE912953}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CF8388D-797D-4446-9C24-0E67BE912953}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34FDD544-5F28-4798-93A4-F77BB54254EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34FDD544-5F28-4798-93A4-F77BB54254EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34FDD544-5F28-4798-93A4-F77BB54254EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34FDD544-5F28-4798-93A4-F77BB54254EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{612325DB-2827-44C4-8178-992CA45F8B7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{612325DB-2827-44C4-8178-992CA45F8B7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{612325DB-2827-44C4-8178-992CA45F8B7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{612325DB-2827-44C4-8178-992CA45F8B7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CC84C8E-F22D-4D5E-A7CC-B3CDF7FA9FBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CC84C8E-F22D-4D5E-A7CC-B3CDF7FA9FBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CC84C8E-F22D-4D5E-A7CC-B3CDF7FA9FBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CC84C8E-F22D-4D5E-A7CC-B3CDF7FA9FBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1308AF0D-3226-4842-84C4-CECF842A4A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1308AF0D-3226-4842-84C4-CECF842A4A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1308AF0D-3226-4842-84C4-CECF842A4A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1308AF0D-3226-4842-84C4-CECF842A4A48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9617A00C-DE07-422F-B5E4-CA1760D19FF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9617A00C-DE07-422F-B5E4-CA1760D19FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9617A00C-DE07-422F-B5E4-CA1760D19FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9617A00C-DE07-422F-B5E4-CA1760D19FF5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7CF8388D-797D-4446-9C24-0E67BE912953} = {A7E3A352-F410-4AC9-B2DC-AE621601B0B4}
+		{34FDD544-5F28-4798-93A4-F77BB54254EE} = {A7E3A352-F410-4AC9-B2DC-AE621601B0B4}
+		{612325DB-2827-44C4-8178-992CA45F8B7B} = {A7E3A352-F410-4AC9-B2DC-AE621601B0B4}
+		{0CC84C8E-F22D-4D5E-A7CC-B3CDF7FA9FBE} = {659E665B-2E0D-4775-A979-60BA98F407CE}
+		{1308AF0D-3226-4842-84C4-CECF842A4A48} = {B14E63C3-CDD7-4ACC-9F8D-F994D00B5FEB}
+		{9617A00C-DE07-422F-B5E4-CA1760D19FF5} = {B14E63C3-CDD7-4ACC-9F8D-F994D00B5FEB}
+	EndGlobalSection
+EndGlobal
