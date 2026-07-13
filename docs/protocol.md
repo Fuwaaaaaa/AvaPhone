@@ -1,4 +1,4 @@
-# Avatar Smartphone Link 通信プロトコル定義 v1
+# AvaPhone 通信プロトコル定義 v1
 
 スマートフォンアプリ ⇔ PC中継アプリ間のWebSocketプロトコル、および
 中継アプリ ⇔ VRChat間のOSCパラメータの**単一情報源**。

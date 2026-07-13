@@ -37,7 +37,7 @@ public static class RelayApp
 
         app.UseWebSockets(new WebSocketOptions { KeepAliveInterval = TimeSpan.FromSeconds(15) });
         app.Map(Core.Protocol.ProtocolConstants.WsPath, hub.HandleAsync);
-        app.MapGet("/", () => "VrcPhoneRelay - Avatar Smartphone Link 中継アプリ");
+        app.MapGet("/", () => "AvaPhone 中継アプリ (VrcPhoneRelay)");
 
         return app;
     }

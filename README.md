@@ -1,6 +1,7 @@
-# Avatar Smartphone Link
+# AvaPhone(アバフォン)
 
 実スマートフォンからVRChatアバター上のスマートフォンギミックを操作するシステム。
+(正式名称: AvaPhone / 仕様書上の旧仮称: Avatar Smartphone Link)
 
 ```
 スマホアプリ(Flutter) ⇔ [WebSocket/JSON/同一LAN] ⇔ PC中継アプリ(C#/.NET 8) ⇔ [OSC/OSCQuery] ⇔ PC版VRChat

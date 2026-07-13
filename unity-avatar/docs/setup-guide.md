@@ -1,6 +1,6 @@
-# Phone Gimmick セットアップガイド
+﻿# Phone Gimmick セットアップガイド
 
-Avatar Smartphone Link の Unity(アバター)側セットアップ手順。
+AvaPhone の Unity(アバター)側セットアップ手順。
 対象: Unity 2022.3.22f1 + VRChat Creator Companion(VCC)+ `com.vrchat.avatars` >= 3.7.0。
 
 パラメータ仕様の正は `docs/protocol.md`。Unity側の単一情報源は

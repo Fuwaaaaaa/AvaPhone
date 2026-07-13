@@ -1,4 +1,4 @@
-# VrcPhoneRelay - PC中継アプリ
+# VrcPhoneRelay - AvaPhone PC中継アプリ
 
 スマートフォンアプリとPC版VRChatをつなぐ常駐アプリ。
 WebSocketサーバー(スマホ側)とOSC/OSCQueryクライアント(VRChat側)を中継する。

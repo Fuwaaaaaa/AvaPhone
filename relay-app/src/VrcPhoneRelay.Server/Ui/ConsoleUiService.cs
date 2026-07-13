@@ -27,7 +27,7 @@ public sealed class ConsoleUiService(
         await Task.Delay(500, stoppingToken); // 起動ログが流れるのを待つ
 
         Console.WriteLine();
-        Console.WriteLine("=== VrcPhoneRelay - Avatar Smartphone Link 中継アプリ ===");
+        Console.WriteLine("=== AvaPhone 中継アプリ (VrcPhoneRelay) ===");
         Console.WriteLine("コマンド: pair(QR表示) / status / devices / unpair <deviceId> / quit");
         Console.WriteLine();
 

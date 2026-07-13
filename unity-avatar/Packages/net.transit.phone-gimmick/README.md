@@ -1,7 +1,7 @@
-# Phone Gimmick (net.transit.phone-gimmick)
+﻿# Phone Gimmick (net.transit.phone-gimmick)
 
 VRChatアバター用スマホギミックを自動生成するUnityエディタ拡張(VPMパッケージ)です。
-モノレポ「Avatar Smartphone Link」のUnity側実装で、実スマホ → PC中継アプリ → OSC → VRChat の
+モノレポ「AvaPhone」のUnity側実装で、実スマホ → PC中継アプリ → OSC → VRChat の
 連携先となる Expression Parameters / FX Animator / Expressions Menu / スマホオブジェクト一式を生成します。
 
 パラメータ定義の正は `docs/protocol.md`(リポジトリルート)です。
