@@ -1,4 +1,14 @@
+using System.Text;
 using VrcPhoneRelay.Server;
+
+try
+{
+    Console.OutputEncoding = Encoding.UTF8; // 日本語ログとQRコードの文字化け対策
+}
+catch (IOException)
+{
+    // コンソールなし(サービス実行等)では無視
+}
 
 var configBuilder = new ConfigurationBuilder()
     .SetBasePath(AppContext.BaseDirectory)

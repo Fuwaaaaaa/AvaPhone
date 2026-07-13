@@ -1,6 +1,7 @@
 using FakeVrchat;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using VrcPhoneRelay.Core.Pairing;
 using VrcPhoneRelay.Core.Parameters;
 using VrcPhoneRelay.Server;
 
@@ -18,7 +19,12 @@ public sealed class RelayServerFixture : IAsyncDisposable
     public FakeVrchatServer Fake { get; private set; } = null!;
     public WebApplication App { get; private set; } = null!;
     public RelayRuntime Runtime { get; private set; } = null!;
+    public PairingManager Pairing { get; private set; } = null!;
     public Uri WsUri { get; private set; } = null!;
+
+    /// <summary>直近の認証で発行された資格情報(再接続テスト用)。</summary>
+    public string? LastDeviceId { get; private set; }
+    public string? LastSecret { get; private set; }
 
     private string _configRoot = null!;
 
@@ -47,28 +53,37 @@ public sealed class RelayServerFixture : IAsyncDisposable
             FixedReceivePort = 0,
             OscConfigRoot = _configRoot,
             VrchatProcessProbe = () => true,
+            DeviceStorePath = Path.Combine(_configRoot, "devices.json"),
+            EnableConsoleUi = false,
         };
 
         App = RelayApp.Build(options);
         await App.StartAsync();
 
         Runtime = App.Services.GetRequiredService<RelayRuntime>();
+        Pairing = App.Services.GetRequiredService<PairingManager>();
         Fake.SetOutputPort(Runtime.OscReceivePorts[0]);
 
         var httpUrl = App.Urls.First();
         WsUri = new Uri(httpUrl.Replace("http://", "ws://") + "/ws");
     }
 
-    /// <summary>接続+認証済みのクライアントを作る。auth.ackと初回snapshotは読み捨てる。</summary>
+    /// <summary>
+    /// ペアリングモードを開始し、接続+認証済みのクライアントを作る。
+    /// auth.ackから発行された資格情報を LastDeviceId / LastSecret に保存する。
+    /// </summary>
     public async Task<TestWsClient> ConnectAuthenticatedAsync()
     {
+        var token = Pairing.BeginPairing();
         var client = new TestWsClient();
         await client.ConnectAsync(WsUri);
         await client.SendAsync(new
         {
-            v = 1, id = client.NextId(), type = "auth", token = "e2e-token", deviceName = "E2E", timestamp = 0L,
+            v = 1, id = client.NextId(), type = "auth", token, deviceName = "E2E", timestamp = 0L,
         });
-        await client.WaitForTypeAsync("auth.ack");
+        var ack = await client.WaitForTypeAsync("auth.ack");
+        LastDeviceId = ack.GetProperty("deviceId").GetString();
+        LastSecret = ack.TryGetProperty("secret", out var s) ? s.GetString() : null;
         await client.WaitForTypeAsync("state.snapshot");
         return client;
     }

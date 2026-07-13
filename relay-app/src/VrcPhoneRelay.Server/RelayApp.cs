@@ -1,4 +1,6 @@
 using VrcPhoneRelay.Core.Abstractions;
+using VrcPhoneRelay.Core.Pairing;
+using VrcPhoneRelay.Server.Ui;
 using VrcPhoneRelay.Server.WebSockets;
 
 namespace VrcPhoneRelay.Server;
@@ -17,9 +19,16 @@ public static class RelayApp
         builder.Services.AddSingleton<IClock>(SystemClock.Instance);
         builder.Services.AddSingleton<RelayRuntime>();
         builder.Services.AddSingleton<WebSocketHub>();
-        builder.Services.AddSingleton<IAuthenticator, DevAuthenticator>();
+        builder.Services.AddSingleton<PairingManager>();
+        builder.Services.AddSingleton(_ =>
+            new DeviceRegistry(options.DeviceStorePath ?? DeviceRegistry.DefaultFilePath));
+        builder.Services.AddSingleton<IAuthenticator, PairingAuthenticator>();
         builder.Services.AddSingleton<MessageRouter>();
         builder.Services.AddHostedService<RelayService>();
+        if (options.EnableConsoleUi)
+        {
+            builder.Services.AddHostedService<ConsoleUiService>();
+        }
 
         var app = builder.Build();
 

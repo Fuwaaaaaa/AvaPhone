@@ -36,4 +36,10 @@ public sealed class RelayOptions
 
     /// <summary>VRChatプロセス検出の差し替え(テスト用)。nullで実プロセス検出。</summary>
     public Func<bool>? VrchatProcessProbe { get; set; }
+
+    /// <summary>ペアリング済み端末の保存先。null で %APPDATA%\VrcPhoneRelay\devices.json。</summary>
+    public string? DeviceStorePath { get; set; }
+
+    /// <summary>コンソール対話UIを起動するか(テストでは無効化)。</summary>
+    public bool EnableConsoleUi { get; set; } = true;
 }

@@ -17,10 +17,11 @@ public class RelayServerE2ETests : IAsyncLifetime
         await using var client = new TestWsClient();
         await client.ConnectAsync(_fx.WsUri);
 
-        // 認証
+        // 認証(ペアリングモードで発行されたトークンを使用)
+        var token = _fx.Pairing.BeginPairing();
         await client.SendAsync(new
         {
-            v = 1, id = "auth-1", type = "auth", token = "tok", deviceName = "TestPhone", timestamp = 0L,
+            v = 1, id = "auth-1", type = "auth", token, deviceName = "TestPhone", timestamp = 0L,
         });
         var ack = await client.WaitForTypeAsync("auth.ack");
         Assert.Equal("auth-1", ack.GetProperty("id").GetString());
